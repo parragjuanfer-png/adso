@@ -12,3 +12,5 @@ Al intentar ingresar a `/no-existe`, Express responde automáticamente con el me
 
 Reflexión del Momento 2
 Express simplifica enormemente el desarrollo comparado con el módulo `http` nativo de Node.js, ya que gestiona de manera automática las rutas no encontradas (404) y facilita la definición de endpoints mediante métodos como `app.get()`.
+
+p5. En el navegador: La página se quedará cargando indefinidamente ("esperando respuesta de localhost...") hasta que el navegador cancele la conexión por tiempo de espera (timeout). No mostrará la respuesta "API Aventuras San Gil funcionando".
