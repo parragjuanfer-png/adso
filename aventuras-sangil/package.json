@@ -1,10 +1,10 @@
 {
   "name": "aventuras-sangil",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "appexpres.js",
   "scripts": {
-    "dev": "node --watch app.js",
-    "start": "node app.js"
+   "dev": "node --watch appexpres.js",
+    "start": "node appexpres.js"
   },
   "keywords": [],
   "author": "",
