@@ -73,3 +73,11 @@ P10.   Persistencia de datos en memoria
 
 ### Explicación:
 Los datos se guardan temporalmente en la memoria RAM del equipo mientras el servidor está encendido. Al guardar un cambio en el código y reiniciar el servidor, la ejecución vuelve a empezar desde cero, lo que borra los elementos agregados en la petición POST y restablece el arreglo con sus datos originales.
+
+P11. 
+¿Qué pasa?: Todas las peticiones, incluso las rutas válidas como GET /actividades, responden con un estado 404 y el mensaje de error de ruta no encontrado.
+
+¿Por qué?: Express procesa las funciones y rutas en el mismo orden de arriba a abajo en el que están escritas. Al colocar la función del 404 al inicio, esta captura inmediatamente cualquier petición entrante y responde finalizando la solicitud, impidiendo que Express alcance a revisar las rutas reales definidas más abajo.
+
+Conclusión para la bitácora
+Express decide qué código ejecutar evaluando cada middleware y ruta en un estricto orden de arriba a abajo, avanzando a la siguiente función únicamente cuando se llama a next , o deteniendo el flujo al enviar una respuesta.

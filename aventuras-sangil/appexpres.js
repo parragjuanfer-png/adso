@@ -51,3 +51,7 @@ app.post('/actividades', (req, res) => {
 app.listen(PORT, () => {
 console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
+
+app.use((req, res) => {
+res.status(404).json({ mensaje: `No existe la ruta ${req.method} ${req.url}` });
+});
