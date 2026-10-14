@@ -55,3 +55,21 @@ El código `404 Not Found` se reserva exclusivamente para cuando la ruta o la UR
 
 ### Solución para `?tipo=AGUA`
 Para solucionar el problema de las mayúsculas, se modificó la comparación del filtro convirtiendo tanto el tipo de la actividad en la lista como el tipo recibido en la URL a minúsculas mediante el método de texto `.toLowerCase()`. De este modo, la búsqueda siempre compara los valores en minúsculas sin importar cómo los escriba el usuario.
+
+P9.  req.body sin middleware express.json()
+
+- **Código de estado en Postman:** Se recibe un estado 201 Created.
+- **Body recibido en Postman:** Se recibe únicamente un objeto con la propiedad id (por ejemplo, {"id": 5}), sin incluir el nombre, el tipo ni el precio de la actividad.
+- **En la terminal de VS Code:** La consola imprime el texto "Body recibido: undefined".
+
+### Explicación:
+Express no sabe interpretar el cuerpo de las peticiones en formato JSON por sí solo. Al no tener activo el procesador de JSON en la aplicación, el servidor lee la propiedad de la petición como un valor indefinido. 
+
+Por esta razón, cuando el código intenta crear la nueva actividad, solo genera el número de identificación automático y pierde la información del nombre, tipo y precio enviada desde Postman.
+
+P10.   Persistencia de datos en memoria
+
+- **¿Sigue estando la actividad creada en la lista?:** No, la actividad que creé desaparece y la lista vuelve a mostrar únicamente las 4 actividades iniciales.
+
+### Explicación:
+Los datos se guardan temporalmente en la memoria RAM del equipo mientras el servidor está encendido. Al guardar un cambio en el código y reiniciar el servidor, la ejecución vuelve a empezar desde cero, lo que borra los elementos agregados en la petición POST y restablece el arreglo con sus datos originales.
